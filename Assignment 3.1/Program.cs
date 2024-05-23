@@ -275,7 +275,7 @@ namespace Assignment_3._1
                     continue;
                 }
             }
-
+             
             Transition();
             Part(5);
          StartPoint5:
@@ -303,32 +303,43 @@ namespace Assignment_3._1
             Console.ForegroundColor = ConsoleColor.White;
 
             // Try Again loop
-            while (true)
+            TryAgain:
+            try
             {
-                // ask user if they want to try again
-                Console.WriteLine("\nWant to try again? (Y / N)");
-                char answer = char.Parse(Console.ReadLine().ToUpper());
-
-                // wants to continue
-                if (answer == 'Y')
+                while (true)
                 {
-                    goto StartPoint5;
-                }
+                    // ask user if they want to try again
+                    Console.WriteLine("\nWant to try again? (Y / N)");
+                    char answer = char.Parse(Console.ReadLine().ToUpper());
 
-                // does not want to continue
-                else if (answer == 'N')
-                {
-                    break;
-                }
+                    // wants to continue
+                    if (answer == 'Y')
+                    {
+                        goto StartPoint5;
+                    }
 
-                // invaid entry
-                else
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("\nEnter valid character");
-                    Console.ForegroundColor = ConsoleColor.White;
-                    continue;
+                    // does not want to continue
+                    else if (answer == 'N')
+                    {
+                        break;
+                    }
+
+                    // invaid entry
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("\nEnter valid character");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        continue;
+                    }
                 }
+            }
+            catch (Exception e)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\nInvaild Answer Choice\n");
+                Console.ForegroundColor = ConsoleColor.White;
+                goto TryAgain;
             }
 
             ClosingMessage();
